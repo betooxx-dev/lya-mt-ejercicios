@@ -7,50 +7,44 @@ class TuringMachine:
         self.head = 0
         self.state = 'q0'
         
-        # Definición de la tabla de transiciones
         self.transition_table = {
             'q0': {
                 'a': ('a', 'R', 'q1'),
-                'b': ('b', 'R', 'qr'),
-                'B': ('B', 'S', 'qf')
+                'b': ('b', 'R', 'q0')  
             },
             'q1': {
                 'b': ('b', 'R', 'q2'),
-                'a': ('a', 'R', 'qr'),
-                'B': ('B', 'L', 'qr')
+                'a': ('a', 'R', 'q1')  
             },
             'q2': {
-                'b': ('b', 'R', 'q0'),
-                'a': ('a', 'R', 'qr'),
-                'B': ('B', 'L', 'qr')
+                'b': ('b', 'R', 'q3'),
+                'a': ('a', 'R', 'q1')  
             },
-            'qr': {
-                'a': ('a', 'L', 'qr'),
-                'b': ('b', 'L', 'qr'),
-                'B': ('B', 'R', 'qreject')
+            'q3': {
+                'a': ('a', 'R', 'q1'),
+                'b': ('b', 'R', 'q0')
             }
         }
 
     def run(self, input_string):
-        self.tape = list(input_string) + ['B']  # B represents blank
+        self.tape = list(input_string) + ['B']  
         self.head = 0
         self.state = 'q0'
 
-        while self.state not in ['qf', 'qreject']:
+        while self.head < len(self.tape):
             current_symbol = self.tape[self.head]
+            if current_symbol == 'B':
+                break
             if self.state in self.transition_table and current_symbol in self.transition_table[self.state]:
                 write_symbol, move, next_state = self.transition_table[self.state][current_symbol]
                 self.tape[self.head] = write_symbol
                 if move == 'R':
                     self.head += 1
-                elif move == 'L':
-                    self.head -= 1
                 self.state = next_state
             else:
-                self.state = 'qreject'
                 break
 
-        return self.state == 'qf', ''.join(self.tape).rstrip('B')
+        return self.state == 'q3', ''.join(self.tape).rstrip('B')
 
 class TuringMachineGUI:
     def __init__(self, master):
@@ -94,14 +88,13 @@ class TuringMachineGUI:
         tm = TuringMachine()
         is_accepted, result = tm.run(input_string)
         if is_accepted:
-            message = f"La cadena '{input_string}' es válida (sigue el patrón 'abb')"
+            message = f"La cadena '{input_string}' es válida (termina en el patrón 'abb')"
             color = "green"
         else:
-            message = f"La cadena '{input_string}' no es válida (no sigue el patrón 'abb')"
+            message = f"La cadena '{input_string}' no es válida (no termina en el patrón 'abb')"
             color = "red"
         self.result_label.config(text=message, fg=color)
 
-# Inicializa la ventana
 root = tk.Tk()
 gui = TuringMachineGUI(root)
 root.mainloop()
