@@ -63,6 +63,6 @@ Resultado: Par (4 unos)
 ```
 
 ## 🔍 Notas Técnicas
-- La máquina usa un símbolo 'B' para marcar el final de la cinta
+- La máquina usa un espacio ' ' para marcar el final de la cinta
 - El movimiento está restringido a derecha (R) y parada (S)
 - El estado 'qf' es el estado final de aceptación

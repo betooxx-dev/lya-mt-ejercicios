@@ -20,7 +20,7 @@ class TuringMachine:
         }
     
     def run(self, input_string):
-        self.tape = list(input_string) + ['B']
+        self.tape = list(input_string) + [' ']
         self.head = 0
         self.state = 'q0'
         
@@ -34,7 +34,7 @@ class TuringMachine:
                 self.state = next_state
             else:
                 break
-        return ''.join(self.tape).rstrip('B')
+        return ''.join(self.tape).rstrip(' ')
 
 class ModernTuringGUI:
     def __init__(self):

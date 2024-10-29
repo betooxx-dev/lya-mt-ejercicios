@@ -62,7 +62,7 @@ Resultado: Válida ✅
 ```
 
 ## 🔍 Notas Técnicas
-- La máquina usa un símbolo ' ' para marcar el final de la cinta
+- La máquina usa un espacio ' ' para marcar el final de la cinta
 - Solo acepta los símbolos 'a' y 'b' como entrada válida
 - El estado 'q3' es el estado de aceptación
 - El movimiento está restringido a derecha (R)
