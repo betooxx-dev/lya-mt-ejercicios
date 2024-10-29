@@ -38,10 +38,10 @@ Este repositorio contiene una colección de ejercicios de Máquinas de Turing de
 ```
 lya-mt-ejercicios/
 ├── ejercicio/
+│   ├── diagrama.png
+│   ├── interfaz.png 
 │   ├── solucion.py
 │   ├── README.md
-│   ├── interfaz.png 
-│   ├── diagrama.png
 └── README.md
 ```
 
