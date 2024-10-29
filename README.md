@@ -40,7 +40,8 @@ lya-mt-ejercicios/
 ├── ejercicio/
 │   ├── solucion.py
 │   ├── README.md
-│   ├── interfaz.png
+│   ├── interfaz.png 
+│   ├── diagrama.png
 └── README.md
 ```
 

@@ -118,7 +118,7 @@ class ModernBinaryTuringGUI:
                  style='Header.TLabel').pack(pady=(0,5))
         
         ttk.Label(self.main_frame,
-                 text="Formato: 10+1= (números binarios)",
+                 text="Formato: 10+n= (donde n pertenece a los números binarios)",
                  style='SubHeader.TLabel').pack(pady=(0,20))
         
         # Frame de entrada
